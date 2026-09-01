@@ -37,10 +37,10 @@ def load_unwpp_lifeexpectancy(
                 columns={'Region, subregion, country or area *': 'Country'})
 
         cols = df_unwpp.columns
-        idxs = [i for i, col in enumerate(cols) if col in ('Country', 'Year', 5)]
+        idxs = [i for i, col in enumerate(cols) if col in ('Country', 'ISO3 Alpha-code', 'Year', 5)]
         df_unwpp = df_unwpp.iloc[:, idxs].pivot(
             index='Year',
-            columns='Country',
+            columns=['Country', 'ISO3 Alpha-code'],
             values=5)
 
         df_unwpp.index = df_unwpp.index.astype(int)
